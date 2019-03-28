@@ -1,0 +1,17 @@
+C:\Users\Admin\source\repos\Sim_Web\Sim_Win\bin\Debug\Sim_Win.exe.config
+C:\Users\Admin\source\repos\Sim_Web\Sim_Win\bin\Debug\Sim_Win.exe
+C:\Users\Admin\source\repos\Sim_Web\Sim_Win\bin\Debug\Sim_Win.pdb
+C:\Users\Admin\source\repos\Sim_Web\Sim_Win\bin\Debug\Sim_Library.dll
+C:\Users\Admin\source\repos\Sim_Web\Sim_Win\bin\Debug\EntityFramework.dll
+C:\Users\Admin\source\repos\Sim_Web\Sim_Win\bin\Debug\Sim_Library.pdb
+C:\Users\Admin\source\repos\Sim_Web\Sim_Win\bin\Debug\Sim_Library.dll.config
+C:\Users\Admin\source\repos\Sim_Web\Sim_Win\bin\Debug\EntityFramework.xml
+C:\Users\Admin\source\repos\Sim_Web\Sim_Win\obj\Debug\Sim_Win.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\Sim_Web\Sim_Win\obj\Debug\Sim_Win.Properties.Resources.resources
+C:\Users\Admin\source\repos\Sim_Web\Sim_Win\obj\Debug\Sim_Win.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\Sim_Web\Sim_Win\obj\Debug\Sim_Win.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\Sim_Web\Sim_Win\obj\Debug\Sim_Win.csproj.CopyComplete
+C:\Users\Admin\source\repos\Sim_Web\Sim_Win\obj\Debug\Sim_Win.exe
+C:\Users\Admin\source\repos\Sim_Web\Sim_Win\obj\Debug\Sim_Win.pdb
+C:\Users\Admin\source\repos\Sim_Web\Sim_Win\obj\Debug\Sim_Win.FrmChinh.resources
+C:\Users\Admin\source\repos\Sim_Web\Sim_Win\obj\Debug\Sim_Win.FrmHd.resources

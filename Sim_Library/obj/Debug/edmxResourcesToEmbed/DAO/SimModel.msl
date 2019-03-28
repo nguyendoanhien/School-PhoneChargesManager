@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SimModelStoreContainer" CdmEntityContainer="SimDBContext">
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="SimModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="SimModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="SimModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="SimModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SimModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="SimModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SimModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SimModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SimModel.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="Hd">
+      <EntityTypeMapping TypeName="SimModel.Hd">
+        <MappingFragment StoreEntitySet="Hd">
+          <ScalarProperty Name="MaHd" ColumnName="MaHd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HdCt">
+      <EntityTypeMapping TypeName="SimModel.HdCt">
+        <MappingFragment StoreEntitySet="HdCt">
+          <ScalarProperty Name="MaKh" ColumnName="MaKh" />
+          <ScalarProperty Name="MaHd" ColumnName="MaHd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HdDk">
+      <EntityTypeMapping TypeName="SimModel.HdDk">
+        <MappingFragment StoreEntitySet="HdDk">
+          <ScalarProperty Name="ChiPhiDk" ColumnName="ChiPhiDk" />
+          <ScalarProperty Name="MaHdDk" ColumnName="MaHdDk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HdDkCt">
+      <EntityTypeMapping TypeName="SimModel.HdDkCt">
+        <MappingFragment StoreEntitySet="HdDkCt">
+          <ScalarProperty Name="MaKh" ColumnName="MaKh" />
+          <ScalarProperty Name="MaHkDk" ColumnName="MaHkDk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kh">
+      <EntityTypeMapping TypeName="SimModel.Kh">
+        <MappingFragment StoreEntitySet="Kh">
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+          <ScalarProperty Name="NgheNghiep" ColumnName="NgheNghiep" />
+          <ScalarProperty Name="TenKh" ColumnName="TenKh" />
+          <ScalarProperty Name="MaKh" ColumnName="MaKh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sd">
+      <EntityTypeMapping TypeName="SimModel.Sd">
+        <MappingFragment StoreEntitySet="Sd">
+          <ScalarProperty Name="TgKt" ColumnName="TgKt" />
+          <ScalarProperty Name="TgBd" ColumnName="TgBd" />
+          <ScalarProperty Name="MaSim" ColumnName="MaSim" />
+          <ScalarProperty Name="MaHd" ColumnName="MaHd" />
+          <ScalarProperty Name="MaKh" ColumnName="MaKh" />
+          <ScalarProperty Name="MaSd" ColumnName="MaSd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sim">
+      <EntityTypeMapping TypeName="SimModel.Sim">
+        <MappingFragment StoreEntitySet="Sim">
+          <ScalarProperty Name="MaKh" ColumnName="MaKh" />
+          <ScalarProperty Name="MaHdDk" ColumnName="MaHdDk" />
+          <ScalarProperty Name="SoSim" ColumnName="SoSim" />
+          <ScalarProperty Name="MaSim" ColumnName="MaSim" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SimModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

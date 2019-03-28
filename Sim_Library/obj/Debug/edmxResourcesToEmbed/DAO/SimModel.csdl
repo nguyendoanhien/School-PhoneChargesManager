@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SimModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SimDBContext" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(SimModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(SimModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="Hd" EntityType="SimModel.Hd" />
+    <EntitySet Name="HdCt" EntityType="SimModel.HdCt" />
+    <EntitySet Name="HdDk" EntityType="SimModel.HdDk" />
+    <EntitySet Name="HdDkCt" EntityType="SimModel.HdDkCt" />
+    <EntitySet Name="Kh" EntityType="SimModel.Kh" />
+    <EntitySet Name="Sd" EntityType="SimModel.Sd" />
+    <EntitySet Name="Sim" EntityType="SimModel.Sim" />
+    <EntitySet Name="sysdiagrams" EntityType="SimModel.sysdiagrams" />
+    <AssociationSet Name="FK_HdCt_Hd" Association="SimModel.FK_HdCt_Hd">
+      <End Role="Hd" EntitySet="Hd" />
+      <End Role="HdCt" EntitySet="HdCt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HdCt_Kh" Association="SimModel.FK_HdCt_Kh">
+      <End Role="Kh" EntitySet="Kh" />
+      <End Role="HdCt" EntitySet="HdCt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sd_HdCt" Association="SimModel.FK_Sd_HdCt">
+      <End Role="HdCt" EntitySet="HdCt" />
+      <End Role="Sd" EntitySet="Sd" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HdDkCt_HdDk" Association="SimModel.FK_HdDkCt_HdDk">
+      <End Role="HdDk" EntitySet="HdDk" />
+      <End Role="HdDkCt" EntitySet="HdDkCt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HdDkCt_Kh" Association="SimModel.FK_HdDkCt_Kh">
+      <End Role="Kh" EntitySet="Kh" />
+      <End Role="HdDkCt" EntitySet="HdDkCt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_HdDkCt" Association="SimModel.FK_Sim_HdDkCt">
+      <End Role="HdDkCt" EntitySet="HdDkCt" />
+      <End Role="Sim" EntitySet="Sim" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sd_Sim" Association="SimModel.FK_Sd_Sim">
+      <End Role="Sim" EntitySet="Sim" />
+      <End Role="Sd" EntitySet="Sd" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Hd">
+    <Key>
+      <PropertyRef Name="MaHd" />
+    </Key>
+    <Property Name="MaHd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="HdCt" Relationship="SimModel.FK_HdCt_Hd" FromRole="Hd" ToRole="HdCt" />
+  </EntityType>
+  <EntityType Name="HdCt">
+    <Key>
+      <PropertyRef Name="MaHd" />
+      <PropertyRef Name="MaKh" />
+    </Key>
+    <Property Name="MaHd" Type="Int32" Nullable="false" />
+    <Property Name="MaKh" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Hd" Relationship="SimModel.FK_HdCt_Hd" FromRole="HdCt" ToRole="Hd" />
+    <NavigationProperty Name="Kh" Relationship="SimModel.FK_HdCt_Kh" FromRole="HdCt" ToRole="Kh" />
+    <NavigationProperty Name="Sd" Relationship="SimModel.FK_Sd_HdCt" FromRole="HdCt" ToRole="Sd" />
+  </EntityType>
+  <EntityType Name="HdDk">
+    <Key>
+      <PropertyRef Name="MaHdDk" />
+    </Key>
+    <Property Name="MaHdDk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ChiPhiDk" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="HdDkCt" Relationship="SimModel.FK_HdDkCt_HdDk" FromRole="HdDk" ToRole="HdDkCt" />
+  </EntityType>
+  <EntityType Name="HdDkCt">
+    <Key>
+      <PropertyRef Name="MaHkDk" />
+      <PropertyRef Name="MaKh" />
+    </Key>
+    <Property Name="MaHkDk" Type="Int32" Nullable="false" />
+    <Property Name="MaKh" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="HdDk" Relationship="SimModel.FK_HdDkCt_HdDk" FromRole="HdDkCt" ToRole="HdDk" />
+    <NavigationProperty Name="Kh" Relationship="SimModel.FK_HdDkCt_Kh" FromRole="HdDkCt" ToRole="Kh" />
+    <NavigationProperty Name="Sim" Relationship="SimModel.FK_Sim_HdDkCt" FromRole="HdDkCt" ToRole="Sim" />
+  </EntityType>
+  <EntityType Name="Kh">
+    <Key>
+      <PropertyRef Name="MaKh" />
+    </Key>
+    <Property Name="MaKh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenKh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NgheNghiep" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ChucVu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HdCt" Relationship="SimModel.FK_HdCt_Kh" FromRole="Kh" ToRole="HdCt" />
+    <NavigationProperty Name="HdDkCt" Relationship="SimModel.FK_HdDkCt_Kh" FromRole="Kh" ToRole="HdDkCt" />
+  </EntityType>
+  <EntityType Name="Sd">
+    <Key>
+      <PropertyRef Name="MaSd" />
+    </Key>
+    <Property Name="MaSd" Type="Int32" Nullable="false" />
+    <Property Name="MaKh" Type="Int32" />
+    <Property Name="MaHd" Type="Int32" />
+    <Property Name="MaSim" Type="Int32" />
+    <Property Name="TgBd" Type="DateTime" Precision="3" />
+    <Property Name="TgKt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="HdCt" Relationship="SimModel.FK_Sd_HdCt" FromRole="Sd" ToRole="HdCt" />
+    <NavigationProperty Name="Sim" Relationship="SimModel.FK_Sd_Sim" FromRole="Sd" ToRole="Sim" />
+  </EntityType>
+  <EntityType Name="Sim">
+    <Key>
+      <PropertyRef Name="MaSim" />
+    </Key>
+    <Property Name="MaSim" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SoSim" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="MaHdDk" Type="Int32" />
+    <Property Name="MaKh" Type="Int32" />
+    <NavigationProperty Name="HdDkCt" Relationship="SimModel.FK_Sim_HdDkCt" FromRole="Sim" ToRole="HdDkCt" />
+    <NavigationProperty Name="Sd" Relationship="SimModel.FK_Sd_Sim" FromRole="Sim" ToRole="Sd" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_HdCt_Hd">
+    <End Type="SimModel.Hd" Role="Hd" Multiplicity="1" />
+    <End Type="SimModel.HdCt" Role="HdCt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hd">
+        <PropertyRef Name="MaHd" />
+      </Principal>
+      <Dependent Role="HdCt">
+        <PropertyRef Name="MaHd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HdCt_Kh">
+    <End Type="SimModel.Kh" Role="Kh" Multiplicity="1" />
+    <End Type="SimModel.HdCt" Role="HdCt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kh">
+        <PropertyRef Name="MaKh" />
+      </Principal>
+      <Dependent Role="HdCt">
+        <PropertyRef Name="MaKh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sd_HdCt">
+    <End Type="SimModel.HdCt" Role="HdCt" Multiplicity="0..1" />
+    <End Type="SimModel.Sd" Role="Sd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HdCt">
+        <PropertyRef Name="MaHd" />
+        <PropertyRef Name="MaKh" />
+      </Principal>
+      <Dependent Role="Sd">
+        <PropertyRef Name="MaHd" />
+        <PropertyRef Name="MaKh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HdDkCt_HdDk">
+    <End Type="SimModel.HdDk" Role="HdDk" Multiplicity="1" />
+    <End Type="SimModel.HdDkCt" Role="HdDkCt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HdDk">
+        <PropertyRef Name="MaHdDk" />
+      </Principal>
+      <Dependent Role="HdDkCt">
+        <PropertyRef Name="MaHkDk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HdDkCt_Kh">
+    <End Type="SimModel.Kh" Role="Kh" Multiplicity="1" />
+    <End Type="SimModel.HdDkCt" Role="HdDkCt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kh">
+        <PropertyRef Name="MaKh" />
+      </Principal>
+      <Dependent Role="HdDkCt">
+        <PropertyRef Name="MaKh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_HdDkCt">
+    <End Type="SimModel.HdDkCt" Role="HdDkCt" Multiplicity="0..1" />
+    <End Type="SimModel.Sim" Role="Sim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HdDkCt">
+        <PropertyRef Name="MaHkDk" />
+        <PropertyRef Name="MaKh" />
+      </Principal>
+      <Dependent Role="Sim">
+        <PropertyRef Name="MaHdDk" />
+        <PropertyRef Name="MaKh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sd_Sim">
+    <End Type="SimModel.Sim" Role="Sim" Multiplicity="0..1" />
+    <End Type="SimModel.Sd" Role="Sd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sim">
+        <PropertyRef Name="MaSim" />
+      </Principal>
+      <Dependent Role="Sd">
+        <PropertyRef Name="MaSim" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

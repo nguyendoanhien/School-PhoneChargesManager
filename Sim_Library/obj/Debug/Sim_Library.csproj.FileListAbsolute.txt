@@ -1,0 +1,10 @@
+C:\Users\Admin\source\repos\Sim_Web\Sim_Library\bin\Debug\Sim_Library.dll.config
+C:\Users\Admin\source\repos\Sim_Web\Sim_Library\bin\Debug\Sim_Library.dll
+C:\Users\Admin\source\repos\Sim_Web\Sim_Library\bin\Debug\Sim_Library.pdb
+C:\Users\Admin\source\repos\Sim_Web\Sim_Library\bin\Debug\EntityFramework.dll
+C:\Users\Admin\source\repos\Sim_Web\Sim_Library\bin\Debug\EntityFramework.xml
+C:\Users\Admin\source\repos\Sim_Web\Sim_Library\obj\Debug\Sim_Library.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\Sim_Web\Sim_Library\obj\Debug\Sim_Library.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\Sim_Web\Sim_Library\obj\Debug\Sim_Library.csproj.CopyComplete
+C:\Users\Admin\source\repos\Sim_Web\Sim_Library\obj\Debug\Sim_Library.dll
+C:\Users\Admin\source\repos\Sim_Web\Sim_Library\obj\Debug\Sim_Library.pdb

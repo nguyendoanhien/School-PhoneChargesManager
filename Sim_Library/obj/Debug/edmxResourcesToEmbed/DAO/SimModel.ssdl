@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SimModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Hd">
+    <Key>
+      <PropertyRef Name="MaHd" />
+    </Key>
+    <Property Name="MaHd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HdCt">
+    <Key>
+      <PropertyRef Name="MaHd" />
+      <PropertyRef Name="MaKh" />
+    </Key>
+    <Property Name="MaHd" Type="int" Nullable="false" />
+    <Property Name="MaKh" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HdDk">
+    <Key>
+      <PropertyRef Name="MaHdDk" />
+    </Key>
+    <Property Name="MaHdDk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChiPhiDk" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="HdDkCt">
+    <Key>
+      <PropertyRef Name="MaHkDk" />
+      <PropertyRef Name="MaKh" />
+    </Key>
+    <Property Name="MaHkDk" Type="int" Nullable="false" />
+    <Property Name="MaKh" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kh">
+    <Key>
+      <PropertyRef Name="MaKh" />
+    </Key>
+    <Property Name="MaKh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenKh" Type="nvarchar" MaxLength="255" />
+    <Property Name="NgheNghiep" Type="nvarchar" MaxLength="255" />
+    <Property Name="ChucVu" Type="nvarchar" MaxLength="255" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Sd">
+    <Key>
+      <PropertyRef Name="MaSd" />
+    </Key>
+    <Property Name="MaSd" Type="int" Nullable="false" />
+    <Property Name="MaKh" Type="int" />
+    <Property Name="MaHd" Type="int" />
+    <Property Name="MaSim" Type="int" />
+    <Property Name="TgBd" Type="datetime" />
+    <Property Name="TgKt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Sim">
+    <Key>
+      <PropertyRef Name="MaSim" />
+    </Key>
+    <Property Name="MaSim" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SoSim" Type="varchar" MaxLength="255" />
+    <Property Name="MaHdDk" Type="int" />
+    <Property Name="MaKh" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_HdCt_Hd">
+    <End Role="Hd" Type="Self.Hd" Multiplicity="1" />
+    <End Role="HdCt" Type="Self.HdCt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hd">
+        <PropertyRef Name="MaHd" />
+      </Principal>
+      <Dependent Role="HdCt">
+        <PropertyRef Name="MaHd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HdCt_Kh">
+    <End Role="Kh" Type="Self.Kh" Multiplicity="1" />
+    <End Role="HdCt" Type="Self.HdCt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kh">
+        <PropertyRef Name="MaKh" />
+      </Principal>
+      <Dependent Role="HdCt">
+        <PropertyRef Name="MaKh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HdDkCt_HdDk">
+    <End Role="HdDk" Type="Self.HdDk" Multiplicity="1" />
+    <End Role="HdDkCt" Type="Self.HdDkCt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HdDk">
+        <PropertyRef Name="MaHdDk" />
+      </Principal>
+      <Dependent Role="HdDkCt">
+        <PropertyRef Name="MaHkDk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HdDkCt_Kh">
+    <End Role="Kh" Type="Self.Kh" Multiplicity="1" />
+    <End Role="HdDkCt" Type="Self.HdDkCt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kh">
+        <PropertyRef Name="MaKh" />
+      </Principal>
+      <Dependent Role="HdDkCt">
+        <PropertyRef Name="MaKh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sd_HdCt">
+    <End Role="HdCt" Type="Self.HdCt" Multiplicity="0..1" />
+    <End Role="Sd" Type="Self.Sd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HdCt">
+        <PropertyRef Name="MaHd" />
+        <PropertyRef Name="MaKh" />
+      </Principal>
+      <Dependent Role="Sd">
+        <PropertyRef Name="MaHd" />
+        <PropertyRef Name="MaKh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sd_Sim">
+    <End Role="Sim" Type="Self.Sim" Multiplicity="0..1" />
+    <End Role="Sd" Type="Self.Sd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sim">
+        <PropertyRef Name="MaSim" />
+      </Principal>
+      <Dependent Role="Sd">
+        <PropertyRef Name="MaSim" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_HdDkCt">
+    <End Role="HdDkCt" Type="Self.HdDkCt" Multiplicity="0..1" />
+    <End Role="Sim" Type="Self.Sim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HdDkCt">
+        <PropertyRef Name="MaHkDk" />
+        <PropertyRef Name="MaKh" />
+      </Principal>
+      <Dependent Role="Sim">
+        <PropertyRef Name="MaHdDk" />
+        <PropertyRef Name="MaKh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="SimModelStoreContainer">
+    <EntitySet Name="Hd" EntityType="Self.Hd" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HdCt" EntityType="Self.HdCt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HdDk" EntityType="Self.HdDk" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HdDkCt" EntityType="Self.HdDkCt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kh" EntityType="Self.Kh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sd" EntityType="Self.Sd" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sim" EntityType="Self.Sim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_HdCt_Hd" Association="Self.FK_HdCt_Hd">
+      <End Role="Hd" EntitySet="Hd" />
+      <End Role="HdCt" EntitySet="HdCt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HdCt_Kh" Association="Self.FK_HdCt_Kh">
+      <End Role="Kh" EntitySet="Kh" />
+      <End Role="HdCt" EntitySet="HdCt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HdDkCt_HdDk" Association="Self.FK_HdDkCt_HdDk">
+      <End Role="HdDk" EntitySet="HdDk" />
+      <End Role="HdDkCt" EntitySet="HdDkCt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HdDkCt_Kh" Association="Self.FK_HdDkCt_Kh">
+      <End Role="Kh" EntitySet="Kh" />
+      <End Role="HdDkCt" EntitySet="HdDkCt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sd_HdCt" Association="Self.FK_Sd_HdCt">
+      <End Role="HdCt" EntitySet="HdCt" />
+      <End Role="Sd" EntitySet="Sd" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sd_Sim" Association="Self.FK_Sd_Sim">
+      <End Role="Sim" EntitySet="Sim" />
+      <End Role="Sd" EntitySet="Sd" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_HdDkCt" Association="Self.FK_Sim_HdDkCt">
+      <End Role="HdDkCt" EntitySet="HdDkCt" />
+      <End Role="Sim" EntitySet="Sim" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
