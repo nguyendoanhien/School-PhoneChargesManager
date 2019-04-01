@@ -16,8 +16,8 @@ namespace Sim_Library.DAO
     {
         public Kh()
         {
-            this.HdCt = new HashSet<HdCt>();
-            this.HdDkCt = new HashSet<HdDkCt>();
+            this.Hd = new HashSet<Hd>();
+            this.HdDk = new HashSet<HdDk>();
         }
     
         public int MaKh { get; set; }
@@ -26,7 +26,7 @@ namespace Sim_Library.DAO
         public string ChucVu { get; set; }
         public string DiaChi { get; set; }
     
-        public virtual ICollection<HdCt> HdCt { get; set; }
-        public virtual ICollection<HdDkCt> HdDkCt { get; set; }
+        public virtual ICollection<Hd> Hd { get; set; }
+        public virtual ICollection<HdDk> HdDk { get; set; }
     }
 }

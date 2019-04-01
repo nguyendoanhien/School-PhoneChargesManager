@@ -6,9 +6,35 @@ using System.Threading.Tasks;
 
 namespace Sim_Library.DAO
 {
-    public static class DataProvider
+    public class DataProvider
     {
-        private static SimDBContext _instance = null;
-        public static SimDBContext Instance => _instance ?? new SimDBContext();
+        private static SimDBContext _instance;
+        private static object _syncLock = new object();
+        protected DataProvider()
+        {
+        }
+
+        public static SimDBContext Instance
+        {
+            // Uses lazy initialization.
+
+            // Note: this is not thread safe.
+            get
+            {
+
+                if (_instance == null)
+                {
+                    lock (_syncLock)
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new SimDBContext();
+                        }
+                    }
+                }
+
+                return _instance;
+            }
+        }
     }
 }

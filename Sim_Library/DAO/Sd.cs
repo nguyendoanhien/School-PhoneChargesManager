@@ -15,13 +15,12 @@ namespace Sim_Library.DAO
     public partial class Sd
     {
         public int MaSd { get; set; }
-        public Nullable<int> MaKh { get; set; }
         public Nullable<int> MaHd { get; set; }
         public Nullable<int> MaSim { get; set; }
         public Nullable<System.DateTime> TgBd { get; set; }
         public Nullable<System.DateTime> TgKt { get; set; }
     
-        public virtual HdCt HdCt { get; set; }
+        public virtual Hd Hd { get; set; }
         public virtual Sim Sim { get; set; }
     }
 }

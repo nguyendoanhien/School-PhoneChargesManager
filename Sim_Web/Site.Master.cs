@@ -9,9 +9,10 @@ namespace Sim_Web
 {
     public partial class SiteMaster : MasterPage
     {
+        public string abc = "<script>alert(123)</script>";
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

@@ -16,12 +16,14 @@ namespace Sim_Library.DAO
     {
         public HdDk()
         {
-            this.HdDkCt = new HashSet<HdDkCt>();
+            this.Sim = new HashSet<Sim>();
         }
     
         public int MaHdDk { get; set; }
+        public Nullable<int> MaKh { get; set; }
         public string ChiPhiDk { get; set; }
     
-        public virtual ICollection<HdDkCt> HdDkCt { get; set; }
+        public virtual Kh Kh { get; set; }
+        public virtual ICollection<Sim> Sim { get; set; }
     }
 }

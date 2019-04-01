@@ -7,7 +7,7 @@ using Sim_Library.DAO.Interfaces;
 
 namespace Sim_Library.BUS
 {
-    public class Kh : BaseTable<Kh>,IKh
+    public class Kh : BaseTable<DAO.Kh>,IKh
     {
 
     }

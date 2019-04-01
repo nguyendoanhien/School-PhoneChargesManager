@@ -24,7 +24,7 @@ namespace Sim_Library.DAO
         public Nullable<int> MaHdDk { get; set; }
         public Nullable<int> MaKh { get; set; }
     
-        public virtual HdDkCt HdDkCt { get; set; }
+        public virtual HdDk HdDk { get; set; }
         public virtual ICollection<Sd> Sd { get; set; }
     }
 }

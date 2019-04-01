@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Sim_Library.DAO.Interfaces;
 
 namespace Sim_Library.DAO
 {
-    class BaseTable<T> : IBaseTable<T> where T : class
+    public class BaseTable<T> : IBaseTable<T> where T : class
     {
         public void Xoa(T obj)
         {
@@ -21,8 +22,17 @@ namespace Sim_Library.DAO
 
         public void Them(T obj)
         {
-            DataProvider.Instance.Set<T>().Add(obj);
-            DataProvider.Instance.SaveChanges();
+            try
+            {
+
+                DataProvider.Instance.Set<T>().Add(obj);
+                DataProvider.Instance.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+
         }
 
         public void Sua(T obj)

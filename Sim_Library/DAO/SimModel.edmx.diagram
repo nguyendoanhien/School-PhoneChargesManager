@@ -4,21 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0b6c187a729343ef860d3e9a193f46b6" Name="Diagram1" ZoomLevel="42">
-        <EntityTypeShape EntityType="SimModel.Hd" Width="1.5" PointX="0.75" PointY="1" />
-        <EntityTypeShape EntityType="SimModel.HdCt" Width="1.5" PointX="3" PointY="0.75" />
-        <EntityTypeShape EntityType="SimModel.HdDk" Width="1.5" PointX="0.75" PointY="7" />
-        <EntityTypeShape EntityType="SimModel.HdDkCt" Width="1.5" PointX="3" PointY="3.75" />
-        <EntityTypeShape EntityType="SimModel.Kh" Width="1.5" PointX="0.75" PointY="3.5" />
-        <EntityTypeShape EntityType="SimModel.Sd" Width="1.5" PointX="7.5" PointY="2" />
-        <EntityTypeShape EntityType="SimModel.Sim" Width="1.5" PointX="5.25" PointY="3.625" />
-        <EntityTypeShape EntityType="SimModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="7.5" />
-        <AssociationConnector Association="SimModel.FK_HdCt_Hd" />
-        <AssociationConnector Association="SimModel.FK_HdCt_Kh" />
-        <AssociationConnector Association="SimModel.FK_Sd_HdCt" />
-        <AssociationConnector Association="SimModel.FK_HdDkCt_HdDk" />
-        <AssociationConnector Association="SimModel.FK_HdDkCt_Kh" />
-        <AssociationConnector Association="SimModel.FK_Sim_HdDkCt" />
+      <Diagram DiagramId="5ea6275df7574015987a1d576cb35bb3" Name="Diagram1">
+        <EntityTypeShape EntityType="SimModel.Hd" Width="1.5" PointX="3" PointY="4.5" />
+        <EntityTypeShape EntityType="SimModel.HdDk" Width="1.5" PointX="3" PointY="1.5" />
+        <EntityTypeShape EntityType="SimModel.Kh" Width="1.5" PointX="0.75" PointY="2.625" />
+        <EntityTypeShape EntityType="SimModel.Sd" Width="1.5" PointX="7.5" PointY="2.625" />
+        <EntityTypeShape EntityType="SimModel.Sim" Width="1.5" PointX="5.25" PointY="1.375" />
+        <AssociationConnector Association="SimModel.FK_Hd_Kh" />
+        <AssociationConnector Association="SimModel.FK_Sd_Hd" />
+        <AssociationConnector Association="SimModel.FK_HdDk_Kh" />
+        <AssociationConnector Association="SimModel.FK_Sim_HdDk" />
         <AssociationConnector Association="SimModel.FK_Sd_Sim" />
       </Diagram>
     </edmx:Diagrams>

@@ -28,5 +28,17 @@ namespace Sim_Win
         {
             throw new NotImplementedException();
         }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // FrmKh
+            // 
+            this.ClientSize = new System.Drawing.Size(775, 334);
+            this.Name = "FrmKh";
+            this.ResumeLayout(false);
+
+        }
     }
 }

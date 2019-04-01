@@ -16,11 +16,13 @@ namespace Sim_Library.DAO
     {
         public Hd()
         {
-            this.HdCt = new HashSet<HdCt>();
+            this.Sd = new HashSet<Sd>();
         }
     
         public int MaHd { get; set; }
+        public Nullable<int> MaKh { get; set; }
     
-        public virtual ICollection<HdCt> HdCt { get; set; }
+        public virtual Kh Kh { get; set; }
+        public virtual ICollection<Sd> Sd { get; set; }
     }
 }

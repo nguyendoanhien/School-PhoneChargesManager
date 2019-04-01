@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Admin\source\repos\Sim_Web\Sim_Library\DAO\SimModel.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\Hien\School\Xay dung phan mem theo mo hinh phan lop\Sim\Sim_Library\DAO\SimModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
