@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BUS\BaseTable.cs" />
+    <Compile Include="BUS\HdBus.cs" />
     <Compile Include="BUS\Interfaces\IBaseTable.cs" />
     <Compile Include="BUS\Interfaces\IHd.cs" />
     <Compile Include="BUS\Interfaces\IHdDk.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="DAO\Hd.cs">
       <DependentUpon>SimModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAO\HdDao.cs" />
     <Compile Include="DAO\HdDk.cs">
       <DependentUpon>SimModel.tt</DependentUpon>
     </Compile>
@@ -98,6 +100,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SimModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DAO\sysdiagrams.cs">
+      <DependentUpon>SimModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GridViewHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimLogs\SimHelper.cs" />
   </ItemGroup>

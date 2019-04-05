@@ -5,9 +5,9 @@ using Sim_Win.interfaces;
 
 namespace Sim_Win
 {
-    class FrmKh:Form,IFrmSim
+    class FrmKh : Form, IFrmSim
     {
-        private Kh _kh;
+
 
         public void Them(object sender, EventArgs e)
         {

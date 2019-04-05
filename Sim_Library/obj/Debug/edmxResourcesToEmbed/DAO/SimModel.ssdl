@@ -42,7 +42,16 @@
     <Property Name="MaSim" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SoSim" Type="varchar" MaxLength="255" />
     <Property Name="MaHdDk" Type="int" />
-    <Property Name="MaKh" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <Association Name="FK_Hd_Kh">
     <End Role="Kh" Type="Self.Kh" Multiplicity="0..1" />
@@ -110,6 +119,7 @@
     <EntitySet Name="Kh" EntityType="Self.Kh" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sd" EntityType="Self.Sd" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sim" EntityType="Self.Sim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Hd_Kh" Association="Self.FK_Hd_Kh">
       <End Role="Kh" EntitySet="Kh" />
       <End Role="Hd" EntitySet="Hd" />

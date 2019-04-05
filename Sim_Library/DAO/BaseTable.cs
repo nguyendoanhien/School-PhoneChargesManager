@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using Sim_Library.DAO.Interfaces;
 
 namespace Sim_Library.DAO
@@ -28,7 +29,7 @@ namespace Sim_Library.DAO
                 DataProvider.Instance.Set<T>().Add(obj);
                 DataProvider.Instance.SaveChanges();
             }
-            catch (Exception e)
+            catch (AmbiguousMatchException)
             {
                 throw;
             }

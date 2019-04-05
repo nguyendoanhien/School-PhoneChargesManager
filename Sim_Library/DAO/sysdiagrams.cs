@@ -12,18 +12,12 @@ namespace Sim_Library.DAO
     using System;
     using System.Collections.Generic;
     
-    public partial class Sim
+    public partial class sysdiagrams
     {
-        public Sim()
-        {
-            this.Sd = new HashSet<Sd>();
-        }
-    
-        public int MaSim { get; set; }
-        public string SoSim { get; set; }
-        public Nullable<int> MaHdDk { get; set; }
-    
-        public virtual HdDk HdDk { get; set; }
-        public virtual ICollection<Sd> Sd { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

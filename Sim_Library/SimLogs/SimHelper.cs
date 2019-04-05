@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Hosting;
@@ -35,12 +36,17 @@ namespace Sim_Library.SimLogs
                             MaSim = Int32.Parse(row[0]),
                             TgBd = DateTime.Parse(row[1]),
                             TgKt = DateTime.Parse(row[2]),
-                            Sim = _simBus.TatCa().FirstOrDefault(m => m.MaSim.Equals(int.Parse(row[0])))
+                            Sim = _simBus.TatCa().Where(m => m.MaSim.Equals(int.Parse(row[0]))).FirstOrDefault()
+
+
                         });
 
                 }
             }
+#pragma warning disable 0168
             catch (Exception e)
+#pragma warning restore 0168
+
             {
                 return null;
             }
@@ -51,9 +57,10 @@ namespace Sim_Library.SimLogs
         public static double CaculateSmsMoney(List<Sd> sdList)
         {
             double money = 0;
-            List<Tuple<int, int, double>> range = new List<Tuple<int, int, double>>();
-            range.Add(new Tuple<int, int, double>(7, 23, 200));
-            range.Add(new Tuple<int, int, double>(23, 7, 150));
+            List<Tuple<int, int, double>> range = new List<Tuple<int, int, double>>
+            {
+                new Tuple<int, int, double>(7, 23, 200), new Tuple<int, int, double>(23, 7, 150)
+            };
 
             foreach (var sd in sdList)
             {

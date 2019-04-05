@@ -6,6 +6,7 @@
     <EntitySet Name="Kh" EntityType="SimModel.Kh" />
     <EntitySet Name="Sd" EntityType="SimModel.Sd" />
     <EntitySet Name="Sim" EntityType="SimModel.Sim" />
+    <EntitySet Name="sysdiagrams" EntityType="SimModel.sysdiagrams" />
     <AssociationSet Name="FK_Hd_Kh" Association="SimModel.FK_Hd_Kh">
       <End Role="Kh" EntitySet="Kh" />
       <End Role="Hd" EntitySet="Hd" />
@@ -77,9 +78,18 @@
     <Property Name="MaSim" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="SoSim" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="MaHdDk" Type="Int32" />
-    <Property Name="MaKh" Type="Int32" />
     <NavigationProperty Name="HdDk" Relationship="SimModel.FK_Sim_HdDk" FromRole="Sim" ToRole="HdDk" />
     <NavigationProperty Name="Sd" Relationship="SimModel.FK_Sd_Sim" FromRole="Sim" ToRole="Sd" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <Association Name="FK_Hd_Kh">
     <End Type="SimModel.Kh" Role="Kh" Multiplicity="0..1" />

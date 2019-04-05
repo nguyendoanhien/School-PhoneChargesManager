@@ -30,5 +30,6 @@ namespace Sim_Library.DAO
         public DbSet<Kh> Kh { get; set; }
         public DbSet<Sd> Sd { get; set; }
         public DbSet<Sim> Sim { get; set; }
+        public DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

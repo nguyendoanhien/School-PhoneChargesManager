@@ -173,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="pages\HoaDon.aspx.cs">
       <DependentUpon>HoaDon.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
