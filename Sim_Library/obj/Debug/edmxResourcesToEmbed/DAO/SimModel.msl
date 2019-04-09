@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Hd">
       <EntityTypeMapping TypeName="SimModel.Hd">
         <MappingFragment StoreEntitySet="Hd">
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
           <ScalarProperty Name="MaKh" ColumnName="MaKh" />
           <ScalarProperty Name="MaHd" ColumnName="MaHd" />
         </MappingFragment>
@@ -15,6 +16,16 @@
           <ScalarProperty Name="ChiPhiDk" ColumnName="ChiPhiDk" />
           <ScalarProperty Name="MaKh" ColumnName="MaKh" />
           <ScalarProperty Name="MaHdDk" ColumnName="MaHdDk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kg">
+      <EntityTypeMapping TypeName="SimModel.Kg">
+        <MappingFragment StoreEntitySet="Kg">
+          <ScalarProperty Name="GiaCuoc" ColumnName="GiaCuoc" />
+          <ScalarProperty Name="GioKt" ColumnName="GioKt" />
+          <ScalarProperty Name="GioBd" ColumnName="GioBd" />
+          <ScalarProperty Name="MaKg" ColumnName="MaKg" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -32,6 +43,7 @@
     <EntitySetMapping Name="Sd">
       <EntityTypeMapping TypeName="SimModel.Sd">
         <MappingFragment StoreEntitySet="Sd">
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
           <ScalarProperty Name="TgKt" ColumnName="TgKt" />
           <ScalarProperty Name="TgBd" ColumnName="TgBd" />
           <ScalarProperty Name="MaSim" ColumnName="MaSim" />

@@ -6,6 +6,7 @@
     </Key>
     <Property Name="MaHd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MaKh" Type="int" />
+    <Property Name="TongTien" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="HdDk">
     <Key>
@@ -14,6 +15,15 @@
     <Property Name="MaHdDk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MaKh" Type="int" />
     <Property Name="ChiPhiDk" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Kg">
+    <Key>
+      <PropertyRef Name="MaKg" />
+    </Key>
+    <Property Name="MaKg" Type="int" Nullable="false" />
+    <Property Name="GioBd" Type="time" Precision="7" />
+    <Property Name="GioKt" Type="time" Precision="7" />
+    <Property Name="GiaCuoc" Type="nvarchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="Kh">
     <Key>
@@ -34,6 +44,7 @@
     <Property Name="MaSim" Type="int" />
     <Property Name="TgBd" Type="datetime" />
     <Property Name="TgKt" Type="datetime" />
+    <Property Name="TongTien" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="Sim">
     <Key>
@@ -116,6 +127,7 @@
   <EntityContainer Name="SimModelStoreContainer">
     <EntitySet Name="Hd" EntityType="Self.Hd" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HdDk" EntityType="Self.HdDk" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kg" EntityType="Self.Kg" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Kh" EntityType="Self.Kh" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sd" EntityType="Self.Sd" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sim" EntityType="Self.Sim" Schema="dbo" store:Type="Tables" />

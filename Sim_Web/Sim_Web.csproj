@@ -250,6 +250,10 @@
       <Project>{e60f8a0b-8dea-4056-8faa-fcaddd3272c0}</Project>
       <Name>Sim_Library</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{0a55854e-c3a6-45cf-9d22-7d36420e1dec}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -27,6 +27,7 @@ namespace Sim_Library.DAO
     
         public DbSet<Hd> Hd { get; set; }
         public DbSet<HdDk> HdDk { get; set; }
+        public DbSet<Kg> Kg { get; set; }
         public DbSet<Kh> Kh { get; set; }
         public DbSet<Sd> Sd { get; set; }
         public DbSet<Sim> Sim { get; set; }

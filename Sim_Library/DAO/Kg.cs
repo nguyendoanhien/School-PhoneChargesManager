@@ -12,16 +12,11 @@ namespace Sim_Library.DAO
     using System;
     using System.Collections.Generic;
     
-    public partial class Sd
+    public partial class Kg
     {
-        public int MaSd { get; set; }
-        public Nullable<int> MaHd { get; set; }
-        public Nullable<int> MaSim { get; set; }
-        public Nullable<System.DateTime> TgBd { get; set; }
-        public Nullable<System.DateTime> TgKt { get; set; }
-        public string TongTien { get; set; }
-    
-        public virtual Hd Hd { get; set; }
-        public virtual Sim Sim { get; set; }
+        public int MaKg { get; set; }
+        public Nullable<System.TimeSpan> GioBd { get; set; }
+        public Nullable<System.TimeSpan> GioKt { get; set; }
+        public string GiaCuoc { get; set; }
     }
 }

@@ -21,6 +21,7 @@ namespace Sim_Library.DAO
     
         public int MaHd { get; set; }
         public Nullable<int> MaKh { get; set; }
+        public string TongTien { get; set; }
     
         public virtual Kh Kh { get; set; }
         public virtual ICollection<Sd> Sd { get; set; }

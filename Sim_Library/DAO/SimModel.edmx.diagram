@@ -6,11 +6,12 @@
     <edmx:Diagrams>
       <Diagram DiagramId="5ea6275df7574015987a1d576cb35bb3" Name="Diagram1">
         <EntityTypeShape EntityType="SimModel.Hd" Width="1.5" PointX="3" PointY="1.375" />
-        <EntityTypeShape EntityType="SimModel.HdDk" Width="1.5" PointX="3" PointY="4.125" />
-        <EntityTypeShape EntityType="SimModel.Kh" Width="1.5" PointX="0.75" PointY="2.5" />
+        <EntityTypeShape EntityType="SimModel.HdDk" Width="1.5" PointX="3" PointY="4.25" />
+        <EntityTypeShape EntityType="SimModel.Kg" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="SimModel.Kh" Width="1.5" PointX="0.75" PointY="2.625" />
         <EntityTypeShape EntityType="SimModel.Sd" Width="1.5" PointX="7.5" PointY="2.5" />
-        <EntityTypeShape EntityType="SimModel.Sim" Width="1.5" PointX="5.25" PointY="4.125" />
-        <EntityTypeShape EntityType="SimModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="SimModel.Sim" Width="1.5" PointX="5.25" PointY="4.25" />
+        <EntityTypeShape EntityType="SimModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="7.75" />
         <AssociationConnector Association="SimModel.FK_Hd_Kh" />
         <AssociationConnector Association="SimModel.FK_Sd_Hd" />
         <AssociationConnector Association="SimModel.FK_HdDk_Kh" />

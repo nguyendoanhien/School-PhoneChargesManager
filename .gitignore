@@ -1,0 +1,8 @@
+/.vs
+/Sim_Win/obj
+/Sim_Win/bin
+/Sim_Web/obj
+/Sim_Web/bin
+/Sim_Win/*
+obj
+bin

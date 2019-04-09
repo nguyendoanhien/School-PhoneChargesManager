@@ -51,12 +51,13 @@
   <ItemGroup>
     <Compile Include="BUS\BaseTable.cs" />
     <Compile Include="BUS\HdBus.cs" />
+    <Compile Include="BUS\HdDkBus.cs" />
     <Compile Include="BUS\Interfaces\IBaseTable.cs" />
     <Compile Include="BUS\Interfaces\IHd.cs" />
     <Compile Include="BUS\Interfaces\IHdDk.cs" />
     <Compile Include="BUS\Interfaces\IKh.cs" />
     <Compile Include="BUS\Interfaces\ISim.cs" />
-    <Compile Include="BUS\Kh.cs" />
+    <Compile Include="BUS\KgBUS.cs" />
     <Compile Include="BUS\KhBus.cs" />
     <Compile Include="BUS\SdBus.cs" />
     <Compile Include="BUS\SimBus.cs" />
@@ -69,11 +70,16 @@
     <Compile Include="DAO\HdDk.cs">
       <DependentUpon>SimModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAO\HdDkDao.cs" />
     <Compile Include="DAO\Interfaces\IHd.cs" />
     <Compile Include="DAO\Interfaces\IHdDk.cs" />
     <Compile Include="DAO\Interfaces\IKh.cs" />
     <Compile Include="DAO\Interfaces\ISim.cs" />
     <Compile Include="DAO\Interfaces\IBaseTable.cs" />
+    <Compile Include="DAO\Kg.cs">
+      <DependentUpon>SimModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\KgDAO.cs" />
     <Compile Include="DAO\Kh.cs">
       <DependentUpon>SimModel.tt</DependentUpon>
     </Compile>

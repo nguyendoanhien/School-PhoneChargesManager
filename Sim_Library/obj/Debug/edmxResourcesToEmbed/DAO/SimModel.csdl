@@ -3,6 +3,7 @@
   <EntityContainer Name="SimDBContext" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Hd" EntityType="SimModel.Hd" />
     <EntitySet Name="HdDk" EntityType="SimModel.HdDk" />
+    <EntitySet Name="Kg" EntityType="SimModel.Kg" />
     <EntitySet Name="Kh" EntityType="SimModel.Kh" />
     <EntitySet Name="Sd" EntityType="SimModel.Sd" />
     <EntitySet Name="Sim" EntityType="SimModel.Sim" />
@@ -34,6 +35,7 @@
     </Key>
     <Property Name="MaHd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="MaKh" Type="Int32" />
+    <Property Name="TongTien" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Kh" Relationship="SimModel.FK_Hd_Kh" FromRole="Hd" ToRole="Kh" />
     <NavigationProperty Name="Sd" Relationship="SimModel.FK_Sd_Hd" FromRole="Hd" ToRole="Sd" />
   </EntityType>
@@ -46,6 +48,15 @@
     <Property Name="ChiPhiDk" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Kh" Relationship="SimModel.FK_HdDk_Kh" FromRole="HdDk" ToRole="Kh" />
     <NavigationProperty Name="Sim" Relationship="SimModel.FK_Sim_HdDk" FromRole="HdDk" ToRole="Sim" />
+  </EntityType>
+  <EntityType Name="Kg">
+    <Key>
+      <PropertyRef Name="MaKg" />
+    </Key>
+    <Property Name="MaKg" Type="Int32" Nullable="false" />
+    <Property Name="GioBd" Type="Time" Precision="7" />
+    <Property Name="GioKt" Type="Time" Precision="7" />
+    <Property Name="GiaCuoc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Kh">
     <Key>
@@ -68,6 +79,7 @@
     <Property Name="MaSim" Type="Int32" />
     <Property Name="TgBd" Type="DateTime" Precision="3" />
     <Property Name="TgKt" Type="DateTime" Precision="3" />
+    <Property Name="TongTien" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Hd" Relationship="SimModel.FK_Sd_Hd" FromRole="Sd" ToRole="Hd" />
     <NavigationProperty Name="Sim" Relationship="SimModel.FK_Sd_Sim" FromRole="Sd" ToRole="Sim" />
   </EntityType>

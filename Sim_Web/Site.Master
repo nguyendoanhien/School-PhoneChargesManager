@@ -50,7 +50,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/pages/KhachHang">Khách hàng</a></li>
-                        <li><a runat="server" href="~/pages/Sim">Sim</a></li>
+                        <li><a runat="server" href="~/pages/Sim">PageSim</a></li>
                         <li><a runat="server" href="~/pages/HoaDon">Hóa đơn</a></li>
                     </ul>
                 </div>

@@ -8,6 +8,8 @@ using Sim_Library;
 using Sim_Library.BUS;
 using Sim_Library.DAO;
 using Sim_Library.SimLogs;
+using Utilities;
+using Convert = System.Convert;
 
 namespace Sim_Web.pages
 {
@@ -25,6 +27,14 @@ namespace Sim_Web.pages
         {
             gvHoaDonChiTiet.DataSource = _sdBus.TatCa().Where(m => m.MaHd == maHd);
             gvHoaDonChiTiet.DataBind();
+            if (gvHoaDonChiTiet != null && gvHoaDonChiTiet.Rows.Count > 0)
+            {
+                lbHoaDonChiTiet.Text = "";
+            }
+            else
+            {
+                lbHoaDonChiTiet.Text = "Không có dữ liệu";
+            }
         }
 
         protected void btnLogSms_Click(object sender, EventArgs e)
@@ -99,8 +109,13 @@ namespace Sim_Web.pages
             var data = (string)ViewState["vsLogSmsKh"];
             var definition = new[] { new { MaSim = 0, TgBd = new DateTime(), TgKt = new DateTime(), Money = "0" } };
             var dynObject = JsonConvert.DeserializeAnonymousType(data, definition);
+            int tongTien = 0;
+            foreach (var x in dynObject)
+            {
 
-            _hdBus.Them(new Hd { MaKh = int.Parse(rdlKh.SelectedValue) });
+                tongTien += int.Parse(x.Money.Replace(",", ""));
+            }
+            _hdBus.Them(new Hd { MaKh = int.Parse(rdlKh.SelectedValue), TongTien = tongTien.ToString() });
 
             foreach (var m in dynObject)
                 _sdBus.Them(new Sd
@@ -108,7 +123,8 @@ namespace Sim_Web.pages
                     MaSim = m.MaSim,
                     TgBd = m.TgBd,
                     TgKt = m.TgKt,
-                    MaHd = _hdBus.TatCa().Last().MaHd
+                    MaHd = _hdBus.TatCa().Last().MaHd,
+                    TongTien = m.Money
                 });
         }
 
@@ -123,6 +139,23 @@ namespace Sim_Web.pages
             var index = GridViewHelper.GetColumnIndexByName(row, "MaHd");
             var maHd = int.Parse(row.Cells[index].Text);
             gvHoaDonChiTiet_GetData(maHd);
+        }
+
+     
+        protected void btnSendMail_Click(object sender, EventArgs e)
+        {
+
+            var hd = _hdBus.TatCa().FirstOrDefault(m => m.MaHd == Convert.ToInt32(iptMaHd.Value));
+            string chiTietHoaDon = "";
+            foreach (var sd in hd.Sd)
+            {
+                chiTietHoaDon += $"{sd.MaSd} , {sd.TgBd}, {sd.TgKt}, {sd.TongTien} <br/>";
+            }
+
+
+
+            Email.SendGmail("nomad1234vn@gmail.com", "ma8635047", iptEmail.Value, "Thông báo thanh toán",
+                $"Chào {hd.Kh.TenKh} <br/> thông tin hóa đơn {hd.MaHd}<br/>Tổng tiền {hd.TongTien} <br/> Chi tiết hóa đơn <br/>{chiTietHoaDon}");
         }
     }
 }

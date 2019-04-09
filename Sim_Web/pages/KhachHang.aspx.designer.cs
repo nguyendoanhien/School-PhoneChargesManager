@@ -22,15 +22,6 @@ namespace Sim_Web.pages {
         protected global::System.Web.UI.WebControls.TextBox txtHoTen;
         
         /// <summary>
-        /// RequiredFieldValidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-        
-        /// <summary>
         /// txtNgheNhgiep control.
         /// </summary>
         /// <remarks>
@@ -58,6 +49,15 @@ namespace Sim_Web.pages {
         protected global::System.Web.UI.WebControls.TextBox txtDiaChi;
         
         /// <summary>
+        /// lbShowStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbShowStatus;
+        
+        /// <summary>
         /// btnDangKy control.
         /// </summary>
         /// <remarks>
@@ -67,12 +67,30 @@ namespace Sim_Web.pages {
         protected global::System.Web.UI.WebControls.Button btnDangKy;
         
         /// <summary>
-        /// ValidationSummary1 control.
+        /// btnClear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        protected global::System.Web.UI.WebControls.Button btnClear;
+        
+        /// <summary>
+        /// gvKh control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvKh;
+        
+        /// <summary>
+        /// gvSims control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvSims;
     }
 }

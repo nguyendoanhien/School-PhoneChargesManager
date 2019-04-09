@@ -76,6 +76,15 @@ namespace Sim_Web.pages {
         protected global::System.Web.UI.WebControls.GridView gvHoaDon;
         
         /// <summary>
+        /// lbHoaDonChiTiet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbHoaDonChiTiet;
+        
+        /// <summary>
         /// gvHoaDonChiTiet control.
         /// </summary>
         /// <remarks>
@@ -83,5 +92,32 @@ namespace Sim_Web.pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvHoaDonChiTiet;
+        
+        /// <summary>
+        /// iptMaHd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText iptMaHd;
+        
+        /// <summary>
+        /// iptEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText iptEmail;
+        
+        /// <summary>
+        /// btnSendMail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSendMail;
     }
 }
