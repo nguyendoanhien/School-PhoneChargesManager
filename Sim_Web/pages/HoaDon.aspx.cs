@@ -18,14 +18,29 @@ namespace Sim_Web.pages
         private readonly KhBus _khBus = new KhBus();
         private readonly HdBus _hdBus = new HdBus();
         private readonly SdBus _sdBus = new SdBus();
-
+        private int selectedReceiptId = -1;
         protected void Page_Load(object sender, EventArgs e)
         {
+
+
+
         }
 
         private void gvHoaDonChiTiet_GetData(int maHd)
         {
-            gvHoaDonChiTiet.DataSource = _sdBus.TatCa().Where(m => m.MaHd == maHd);
+
+            gvHoaDonChiTiet.DataSource = _sdBus.TatCa().Where(m => m.MaHd == maHd)
+                .Select(m=>new
+                {m.MaSd,
+                 m.MaHd,
+                 m.MaSim,
+                 m.Sim.SoSim,
+                 m.TgBd,
+                 m.TgKt,
+                 m.TongTien
+
+                })
+                .ToList();
             gvHoaDonChiTiet.DataBind();
             if (gvHoaDonChiTiet != null && gvHoaDonChiTiet.Rows.Count > 0)
             {
@@ -37,17 +52,18 @@ namespace Sim_Web.pages
             }
         }
 
-        protected void btnLogSms_Click(object sender, EventArgs e)
+        private void gvLogSmsBind()
         {
             var dskq = from sd in SimHelper.ReadFromTextLog()
                        select new
                        {
                            sd.MaSim,
+                           sd.Sim.SoSim,
                            sd.TgBd,
                            sd.TgKt,
                            MaKh = sd.Sim?.HdDk != null ? sd.Sim.HdDk.MaKh + "" : ""
                        };
-            gvLogSms.DataSource = dskq;
+            gvLogSms.DataSource = dskq.ToList();
             gvLogSms.DataBind();
 
             rdlKh.DataSource = (from kh in _khBus.TatCa()
@@ -57,6 +73,12 @@ namespace Sim_Web.pages
             rdlKh.DataValueField = "MaKh";
             rdlKh.DataBind();
             drlLogSmsKh_GetData();
+
+        }
+        protected void btnLogSms_Click(object sender, EventArgs e)
+        {
+            gvLogSmsBind();
+
         }
 
         private void drlLogSmsKh_GetData()
@@ -68,6 +90,7 @@ namespace Sim_Web.pages
                      select new
                      {
                          sd.MaSim,
+                         sd.Sim.SoSim,
                          sd.TgBd,
                          sd.TgKt,
                          Money = $"{SimHelper.CaculateSmsMoney(new List<Sd> { sd }):n0}"
@@ -77,15 +100,15 @@ namespace Sim_Web.pages
             if (ViewState["vsLogSmsKh"] != null && JsonConvert.SerializeObject(kq) == (string)ViewState["vsLogSmsKh"])
             {
                 var data = (string)ViewState["vsLogSmsKh"];
-                var definition = new[] { new { MaSim = 0, TgBd = new DateTime(), TgKt = new DateTime(), Money = "0" } };
+                var definition = new[] { new { MaSim = 0, SoSim = "", TgBd = new DateTime(), TgKt = new DateTime(), Money = "0" } };
                 var dynObject = JsonConvert.DeserializeAnonymousType(data, definition);
 
-                gvLogSmsKh.DataSource = dynObject;
+                gvLogSmsKh.DataSource = dynObject.ToList();
             }
             else
             {
                 var data = JsonConvert.SerializeObject(kq);
-                gvLogSmsKh.DataSource = kq;
+                gvLogSmsKh.DataSource = kq.ToList();
                 ViewState["vsLogSmsKh"] = data;
             }
 
@@ -138,10 +161,12 @@ namespace Sim_Web.pages
             var row = gvHoaDon.Rows[e.NewSelectedIndex];
             var index = GridViewHelper.GetColumnIndexByName(row, "MaHd");
             var maHd = int.Parse(row.Cells[index].Text);
+            if (ViewState["selectedMahd"] == null)
+                ViewState["selectedMahd"] = maHd;
             gvHoaDonChiTiet_GetData(maHd);
         }
 
-     
+
         protected void btnSendMail_Click(object sender, EventArgs e)
         {
 
@@ -156,6 +181,30 @@ namespace Sim_Web.pages
 
             Email.SendGmail("nomad1234vn@gmail.com", "ma8635047", iptEmail.Value, "Thông báo thanh toán",
                 $"Chào {hd.Kh.TenKh} <br/> thông tin hóa đơn {hd.MaHd}<br/>Tổng tiền {hd.TongTien} <br/> Chi tiết hóa đơn <br/>{chiTietHoaDon}");
+        }
+
+        protected void btnLogSmsRandom_Click(object sender, EventArgs e)
+        {
+            SimHelper.GenerateLogs(100);
+        }
+
+        protected void gvLogSms_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvLogSms.PageIndex = e.NewPageIndex;
+            gvLogSmsBind();
+        }
+
+        protected void gvHoaDonChiTiet_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvHoaDonChiTiet.PageIndex = e.NewPageIndex;
+            gvHoaDonChiTiet_GetData(Convert.ToInt32(ViewState["selectedMahd"]));
+
+        }
+
+        protected void gvLogSmsKh_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvLogSmsKh.PageIndex = e.NewPageIndex;
+            drlLogSmsKh_GetData();
         }
     }
 }

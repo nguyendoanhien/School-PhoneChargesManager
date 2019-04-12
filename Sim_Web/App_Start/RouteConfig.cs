@@ -13,6 +13,11 @@ namespace Sim_Web
             var settings = new FriendlyUrlSettings();
             settings.AutoRedirectMode = RedirectMode.Permanent;
             routes.EnableFriendlyUrls(settings);
+
+            routes.MapPageRoute("Home", "", "~/pages/TrangChu.aspx");
+            routes.MapPageRoute("Customer", "khach-hang", "~/pages/KhachHang.aspx");
+            routes.MapPageRoute("Sim", "sim", "~/pages/Sim.aspx");
+            routes.MapPageRoute("Receipt", "hoa-don", "~/pages/HoaDon.aspx");
         }
     }
 }

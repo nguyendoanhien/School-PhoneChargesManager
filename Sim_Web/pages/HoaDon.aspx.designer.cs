@@ -13,6 +13,15 @@ namespace Sim_Web.pages {
     public partial class HoaDon {
         
         /// <summary>
+        /// btnLogSmsRandom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnLogSmsRandom;
+        
+        /// <summary>
         /// btnLogSms control.
         /// </summary>
         /// <remarks>
