@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Sim" Class="SimModelDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=HIENCOMPUTER;Initial Catalog=Sim;Integrated Security=True" SettingsObjectName="DAO.Properties.Settings" SettingsPropertyName="SimConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Hd" Member="Hds">
+    <Type Name="Hd">
+      <Column Name="MaHd" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MaKh" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TongTien" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="Hd_Sd" Member="Sds" ThisKey="MaHd" OtherKey="MaHd" Type="Sd" />
+      <Association Name="Kh_Hd" Member="Kh" ThisKey="MaKh" OtherKey="MaKh" Type="Kh" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sim" Member="Sims">
+    <Type Name="Sim">
+      <Column Name="MaSim" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SoSim" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MaHdDk" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Sim_Sd" Member="Sds" ThisKey="MaSim" OtherKey="MaSim" Type="Sd" />
+      <Association Name="HdDk_Sim" Member="HdDk" ThisKey="MaHdDk" OtherKey="MaHdDk" Type="HdDk" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HdDk" Member="HdDks">
+    <Type Name="HdDk">
+      <Column Name="MaHdDk" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MaKh" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ChiPhiDk" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="HdDk_Sim" Member="Sims" ThisKey="MaHdDk" OtherKey="MaHdDk" Type="Sim" />
+      <Association Name="Kh_HdDk" Member="Kh" ThisKey="MaKh" OtherKey="MaKh" Type="Kh" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Kg" Member="Kgs">
+    <Type Name="Kg">
+      <Column Name="MaKg" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="GioBd" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="GioKt" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="GiaCuoc" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Kh" Member="Khs">
+    <Type Name="Kh">
+      <Column Name="MaKh" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenKh" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="NgheNghiep" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ChucVu" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="Kh_Hd" Member="Hds" ThisKey="MaKh" OtherKey="MaKh" Type="Hd" />
+      <Association Name="Kh_HdDk" Member="HdDks" ThisKey="MaKh" OtherKey="MaKh" Type="HdDk" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sd" Member="Sds">
+    <Type Name="Sd">
+      <Column Name="MaSd" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MaHd" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaSim" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TgBd" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TgKt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TongTien" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="Hd_Sd" Member="Hd" ThisKey="MaHd" OtherKey="MaHd" Type="Hd" IsForeignKey="true" />
+      <Association Name="Sim_Sd" Member="Sim" ThisKey="MaSim" OtherKey="MaSim" Type="Sim" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

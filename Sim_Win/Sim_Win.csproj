@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,13 +65,43 @@
     <Compile Include="FrmSim.Designer.cs">
       <DependentUpon>FrmSim.cs</DependentUpon>
     </Compile>
+    <Compile Include="HoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HoaDon.Designer.cs">
+      <DependentUpon>HoaDon.cs</DependentUpon>
+    </Compile>
     <Compile Include="interfaces\IBaseFrm.cs" />
     <Compile Include="interfaces\IFrmChinh.cs" />
     <Compile Include="interfaces\IFrmHd.cs" />
     <Compile Include="interfaces\IFrmKh.cs" />
     <Compile Include="interfaces\IFrmSim.cs" />
+    <Compile Include="KhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KhachHang.Designer.cs">
+      <DependentUpon>KhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mainform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mainform.Designer.cs">
+      <DependentUpon>Mainform.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SIM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SIM.Designer.cs">
+      <DependentUpon>SIM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Testgoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Testgoi.Designer.cs">
+      <DependentUpon>Testgoi.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FrmChinh.resx">
       <DependentUpon>FrmChinh.cs</DependentUpon>
     </EmbeddedResource>
@@ -79,6 +110,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmKh.resx">
       <DependentUpon>FrmKh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HoaDon.resx">
+      <DependentUpon>HoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KhachHang.resx">
+      <DependentUpon>KhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mainform.resx">
+      <DependentUpon>Mainform.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -89,6 +129,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SIM.resx">
+      <DependentUpon>SIM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Testgoi.resx">
+      <DependentUpon>Testgoi.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -103,6 +149,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{bc47e8cd-3ca3-4174-a595-f2882d45a35f}</Project>
+      <Name>DAO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Sim_Library\Sim_Library.csproj">
       <Project>{e60f8a0b-8dea-4056-8faa-fcaddd3272c0}</Project>
       <Name>Sim_Library</Name>

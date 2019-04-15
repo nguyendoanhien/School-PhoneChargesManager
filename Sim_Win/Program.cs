@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sim_Win
+namespace PhoneChargesManager
 {
     static class Program
     {
@@ -16,7 +16,8 @@ namespace Sim_Win
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmChinh());
+            Application.Run(new Mainform());
+            //Application.Run(new Testgoi());
         }
     }
 }

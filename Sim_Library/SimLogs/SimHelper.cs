@@ -13,6 +13,7 @@ using Sim_Library.DAO;
 
 namespace Sim_Library.SimLogs
 {
+
     public class SimHelper
     {
         private static SimBus _simBus = new SimBus();
@@ -276,6 +277,7 @@ namespace Sim_Library.SimLogs
             {
                 foreach (var sd in sdList)
                 {
+
                     foreach (DateTime date in EachDay(sd.TgBd.Value, sd.TgKt.Value))
                     {
                         TimeSpan fromDate = new TimeSpan();
@@ -301,9 +303,8 @@ namespace Sim_Library.SimLogs
                             toDate = new TimeSpan(23, 59, 59);
                         }
                         TimeSpan time = new TimeSpan();
-                        //if (fromDate.Equals(kg.GioBd.Value))
-                        //    fromDate = fromDate.Add(new TimeSpan(0, 0, 1));
-                        time = GetTimeSpanIntersect(kg.GioBd.Value.Add(new TimeSpan(0,0,1)), kg.GioKt.Value, fromDate, toDate);
+
+                        time = GetTimeSpanIntersect(kg.GioBd.Value.Add(new TimeSpan(0, 0, 1)), kg.GioKt.Value, fromDate, toDate);
 
                         money += ((double)time.TotalSeconds / 60) * double.Parse(kg.GiaCuoc);
                     }
@@ -329,16 +330,16 @@ namespace Sim_Library.SimLogs
                 return new TimeSpan();
 
             if (gioBd > toDate)
-                return new TimeSpan(0,0,1);
+                return new TimeSpan(0, 0, 1);
 
             var actualfromDate = gioBd <= fromDate
                 ? fromDate
                 : gioBd;
-            
+
             var actualtoDate = gioKt >= toDate
                 ? toDate
                 : gioKt;
-            
+
             return actualtoDate - actualfromDate;
         }
     }
