@@ -16,35 +16,43 @@ namespace PhoneChargesManager
         public KhachHang()
         {
             InitializeComponent();
+            txbPhi.Text = "50000";
+            LoadCombo();
         }
         SimModelDataContext db = new SimModelDataContext();
         private void KhachHang_Load(object sender, EventArgs e)
         {
-
             View(dtgv_KH);
+        }
+        private void LoadCombo()
+        {
+            var s = from p in db.Sims where p.TrangThai == false select new { p.SoSim };
+            cbxSosim.DataSource = s;
+            cbxSosim.DisplayMember = "SoSim";
+            cbxSosim.ValueMember = "SoSim";
         }
         public void View( DataGridView data)
         {
             data.DataSource = from a in db.Khs
                               select new
                               {
-                                  Mã_Khách_Hàng = a.MaKh,
-                                  Tên_Khách_Hàng = a.TenKh,
-                                  Nghề_Nghiệp = a.NgheNghiep,
-                                  Chức_Vụ = a.ChucVu,
-                                  Địa_Chỉ = a.DiaChi,
+                                  ID = a.MaKh,
+                                  Name = a.TenKh,
+                                  Work = a.NgheNghiep,
+                                  Post= a.ChucVu,
+                                  Address = a.DiaChi,
+                                  Email = a.Email
                               };
         }
 
         private void btn_Del_Click(object sender, EventArgs e)
         {
             Kh kh = new Kh();
-            int makh = Convert.ToInt32(dtgv_KH.SelectedCells[0].OwningRow.Cells["Mã_Khách_Hàng"].Value.ToString());
+            int makh = Convert.ToInt32(dtgv_KH.SelectedCells[0].OwningRow.Cells["ID"].Value.ToString());
             kh = db.Khs.Where(p => p.MaKh.Equals(makh)).SingleOrDefault();
             db.Khs.DeleteOnSubmit(kh);
             db.SubmitChanges();
             KhachHang_Load(sender, e);
-
 
         }
 
@@ -61,21 +69,29 @@ namespace PhoneChargesManager
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
-            string tenkh = txt_TenKH.Text;
-            string nnghiep = txt_NN.Text;
-            string cvu = txt_CV.Text;
-            string dchi = txt_DC.Text;
+            try
+            {
+                string tenkh = txt_TenKH.Text;
+                string nnghiep = txt_NN.Text;
+                string cvu = txt_CV.Text;
+                string dchi = txt_DC.Text;
 
-            Kh add = new Kh();
-          
-                    add.TenKh = tenkh;
-                    add.NgheNghiep = nnghiep;
-                    add.ChucVu = cvu;
-                    add.DiaChi = dchi;
-                    db.Khs.InsertOnSubmit(add);
-                    db.SubmitChanges();
-            KhachHang_Load(sender, e);
-            Clear();
+                Kh add = new Kh();
+
+                add.TenKh = tenkh;
+                add.NgheNghiep = nnghiep;
+                add.ChucVu = cvu;
+                add.DiaChi = dchi;
+                add.Email = tbxEmail.Text;
+                db.Khs.InsertOnSubmit(add);
+                db.SubmitChanges();
+                KhachHang_Load(sender, e);
+                Clear();
+            }
+            catch
+            {
+                MessageBox.Show("Dữ liệu không hợp lệ hoặc đã tồn tại!");
+            }
         }
         private void Clear()
         {
@@ -90,48 +106,63 @@ namespace PhoneChargesManager
 
             };
             function(Controls);
+            txbPhi.Text = "50000";
         }
 
         private void dtgv_KH_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dtgv_KH.CurrentRow.Selected = true;
-            txt_TenKH.Text = dtgv_KH.Rows[e.RowIndex].Cells["Tên_Khách_Hàng"].FormattedValue.ToString();
-            txt_NN.Text = dtgv_KH.Rows[e.RowIndex].Cells["Nghề_Nghiệp"].FormattedValue.ToString();
-            txt_CV.Text = dtgv_KH.Rows[e.RowIndex].Cells["Chức_Vụ"].FormattedValue.ToString();
-            txt_DC.Text = dtgv_KH.Rows[e.RowIndex].Cells["Địa_Chỉ"].FormattedValue.ToString();
+            txt_TenKH.Text = dtgv_KH.Rows[e.RowIndex].Cells["Name"].FormattedValue.ToString();
+            txt_NN.Text = dtgv_KH.Rows[e.RowIndex].Cells["Work"].FormattedValue.ToString();
+            txt_CV.Text = dtgv_KH.Rows[e.RowIndex].Cells["Post"].FormattedValue.ToString();
+            txt_DC.Text = dtgv_KH.Rows[e.RowIndex].Cells["Address"].FormattedValue.ToString();
+            tbxEmail.Text = dtgv_KH.Rows[e.RowIndex].Cells["Email"].FormattedValue.ToString();
 
 
         }
 
         private void btn_Edit_Click(object sender, EventArgs e)
         {
-            int makh =Convert.ToInt32(dtgv_KH.SelectedCells[0].OwningRow.Cells["Mã_Khách_Hàng"].Value.ToString());
-            string tenkh = txt_TenKH.Text;
-            string nnghiep = txt_NN.Text ;
-            string cvu = txt_CV.Text; 
-            string dchi = txt_DC.Text; 
-            Kh edit = db.Khs.Where(p => p.MaKh.Equals(makh)).SingleOrDefault();
-            edit.TenKh = tenkh;
-            edit.NgheNghiep = nnghiep;
-            edit.ChucVu = cvu;
-            edit.DiaChi = dchi;
+            try
+            {
+                int makh = Convert.ToInt32(dtgv_KH.SelectedCells[0].OwningRow.Cells["ID"].Value.ToString());
+                string tenkh = txt_TenKH.Text;
+                string nnghiep = txt_NN.Text;
+                string cvu = txt_CV.Text;
+                string dchi = txt_DC.Text;
+                Kh edit = db.Khs.Where(p => p.MaKh.Equals(makh)).SingleOrDefault();
+                if (tenkh != "" && nnghiep != "" && cvu != "" && dchi != "" && tbxEmail.Text != "")
+                {
+                    edit.TenKh = tenkh;
+                    edit.NgheNghiep = nnghiep;
+                    edit.ChucVu = cvu;
+                    edit.DiaChi = dchi;
+                    edit.Email = tbxEmail.Text;
 
-            db.SubmitChanges();
-            KhachHang_Load(sender, e);
-            Clear();
+                    db.SubmitChanges();
+                    KhachHang_Load(sender, e);
+                    Clear();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Kiểm tra lại thông tin vừa nhập!");
+            }
         }
 
         public void Find(DataGridView data,string test)
         {
+
             data.DataSource = from b in db.Khs
                               where b.TenKh==test || b.NgheNghiep== test || b.ChucVu== test
                               select new
                               {
-                                  Mã_Khách_Hàng = b.MaKh,
-                                  Tên_Khách_Hàng = b.TenKh,
-                                  Nghề_Nghiệp = b.NgheNghiep,
-                                  Chức_Vụ = b.ChucVu,
-                                  Địa_Chỉ = b.DiaChi,
+                                  ID = b.MaKh,
+                                  Name = b.TenKh,
+                                  Work = b.NgheNghiep,
+                                  Post= b.ChucVu,
+                                  Address = b.DiaChi,
+                                  Email = b.Email
                               };
         }
         private void btn_Find_Click(object sender, EventArgs e)
@@ -139,6 +170,29 @@ namespace PhoneChargesManager
             Find(dtgv_KH, txt_Find.Text);
             Clear();
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                HdDk dk = new HdDk();
+                dk.MaKh = Convert.ToInt32(dtgv_KH.SelectedCells[0].OwningRow.Cells["ID"].Value.ToString());
+                dk.ChiPhiDk = txbPhi.Text;
+                db.HdDks.InsertOnSubmit(dk);
+                db.SubmitChanges();
+
+                Sim newsim = db.Sims.Where(p => p.SoSim.Equals(cbxSosim.Text)).SingleOrDefault();
+                newsim.MaHdDk = Convert.ToInt32(db.HdDks.Max(q => q.MaHdDk));
+                newsim.TrangThai = true;
+                db.SubmitChanges();
+                LoadCombo();
+                MessageBox.Show("Đăng kí thành công!");
+            }
+            catch
+            {
+                MessageBox.Show("Thông tin nhập vào lỗi!");
+            }
         }
     }
 }

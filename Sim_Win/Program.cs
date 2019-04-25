@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sim_Win;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace PhoneChargesManager
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Mainform());
-            //Application.Run(new Testgoi());
+            //Application.Run(new Log());
         }
     }
 }

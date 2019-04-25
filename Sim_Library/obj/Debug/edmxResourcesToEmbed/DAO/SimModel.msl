@@ -4,6 +4,9 @@
     <EntitySetMapping Name="Hd">
       <EntityTypeMapping TypeName="SimModel.Hd">
         <MappingFragment StoreEntitySet="Hd">
+          <ScalarProperty Name="NgayThanhToan" ColumnName="NgayThanhToan" />
+          <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
           <ScalarProperty Name="TongTien" ColumnName="TongTien" />
           <ScalarProperty Name="MaKh" ColumnName="MaKh" />
           <ScalarProperty Name="MaHd" ColumnName="MaHd" />
@@ -43,6 +46,7 @@
     <EntitySetMapping Name="Sd">
       <EntityTypeMapping TypeName="SimModel.Sd">
         <MappingFragment StoreEntitySet="Sd">
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
           <ScalarProperty Name="TongTien" ColumnName="TongTien" />
           <ScalarProperty Name="TgKt" ColumnName="TgKt" />
           <ScalarProperty Name="TgBd" ColumnName="TgBd" />
@@ -55,6 +59,7 @@
     <EntitySetMapping Name="Sim">
       <EntityTypeMapping TypeName="SimModel.Sim">
         <MappingFragment StoreEntitySet="Sim">
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
           <ScalarProperty Name="MaHdDk" ColumnName="MaHdDk" />
           <ScalarProperty Name="SoSim" ColumnName="SoSim" />
           <ScalarProperty Name="MaSim" ColumnName="MaSim" />

@@ -141,6 +141,12 @@ namespace DAO
 		
 		private string _TongTien;
 		
+		private System.Nullable<bool> _TrangThai;
+		
+		private System.Nullable<System.DateTime> _Ngaylap;
+		
+		private System.Nullable<System.DateTime> _Ngaytra;
+		
 		private EntitySet<Sd> _Sds;
 		
 		private EntityRef<Kh> _Kh;
@@ -155,6 +161,12 @@ namespace DAO
     partial void OnMaKhChanged();
     partial void OnTongTienChanging(string value);
     partial void OnTongTienChanged();
+    partial void OnTrangThaiChanging(System.Nullable<bool> value);
+    partial void OnTrangThaiChanged();
+    partial void OnNgaylapChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgaylapChanged();
+    partial void OnNgaytraChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgaytraChanged();
     #endregion
 		
 		public Hd()
@@ -224,6 +236,66 @@ namespace DAO
 					this._TongTien = value;
 					this.SendPropertyChanged("TongTien");
 					this.OnTongTienChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrangThai", DbType="Bit")]
+		public System.Nullable<bool> TrangThai
+		{
+			get
+			{
+				return this._TrangThai;
+			}
+			set
+			{
+				if ((this._TrangThai != value))
+				{
+					this.OnTrangThaiChanging(value);
+					this.SendPropertyChanging();
+					this._TrangThai = value;
+					this.SendPropertyChanged("TrangThai");
+					this.OnTrangThaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ngaylap", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Ngaylap
+		{
+			get
+			{
+				return this._Ngaylap;
+			}
+			set
+			{
+				if ((this._Ngaylap != value))
+				{
+					this.OnNgaylapChanging(value);
+					this.SendPropertyChanging();
+					this._Ngaylap = value;
+					this.SendPropertyChanged("Ngaylap");
+					this.OnNgaylapChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ngaytra", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Ngaytra
+		{
+			get
+			{
+				return this._Ngaytra;
+			}
+			set
+			{
+				if ((this._Ngaytra != value))
+				{
+					this.OnNgaytraChanging(value);
+					this.SendPropertyChanging();
+					this._Ngaytra = value;
+					this.SendPropertyChanged("Ngaytra");
+					this.OnNgaytraChanged();
 				}
 			}
 		}
@@ -320,6 +392,8 @@ namespace DAO
 		
 		private System.Nullable<int> _MaHdDk;
 		
+		private System.Nullable<bool> _TrangThai;
+		
 		private EntitySet<Sd> _Sds;
 		
 		private EntityRef<HdDk> _HdDk;
@@ -334,6 +408,8 @@ namespace DAO
     partial void OnSoSimChanged();
     partial void OnMaHdDkChanging(System.Nullable<int> value);
     partial void OnMaHdDkChanged();
+    partial void OnTrangThaiChanging(System.Nullable<bool> value);
+    partial void OnTrangThaiChanged();
     #endregion
 		
 		public Sim()
@@ -403,6 +479,26 @@ namespace DAO
 					this._MaHdDk = value;
 					this.SendPropertyChanged("MaHdDk");
 					this.OnMaHdDkChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrangThai", DbType="Bit")]
+		public System.Nullable<bool> TrangThai
+		{
+			get
+			{
+				return this._TrangThai;
+			}
+			set
+			{
+				if ((this._TrangThai != value))
+				{
+					this.OnTrangThaiChanging(value);
+					this.SendPropertyChanging();
+					this._TrangThai = value;
+					this.SendPropertyChanged("TrangThai");
+					this.OnTrangThaiChanged();
 				}
 			}
 		}
@@ -499,6 +595,8 @@ namespace DAO
 		
 		private string _ChiPhiDk;
 		
+		private System.Nullable<int> _masim;
+		
 		private EntitySet<Sim> _Sims;
 		
 		private EntityRef<Kh> _Kh;
@@ -513,6 +611,8 @@ namespace DAO
     partial void OnMaKhChanged();
     partial void OnChiPhiDkChanging(string value);
     partial void OnChiPhiDkChanged();
+    partial void OnmasimChanging(System.Nullable<int> value);
+    partial void OnmasimChanged();
     #endregion
 		
 		public HdDk()
@@ -582,6 +682,26 @@ namespace DAO
 					this._ChiPhiDk = value;
 					this.SendPropertyChanged("ChiPhiDk");
 					this.OnChiPhiDkChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_masim", DbType="Int")]
+		public System.Nullable<int> masim
+		{
+			get
+			{
+				return this._masim;
+			}
+			set
+			{
+				if ((this._masim != value))
+				{
+					this.OnmasimChanging(value);
+					this.SendPropertyChanging();
+					this._masim = value;
+					this.SendPropertyChanged("masim");
+					this.OnmasimChanged();
 				}
 			}
 		}
@@ -816,6 +936,8 @@ namespace DAO
 		
 		private string _DiaChi;
 		
+		private string _Email;
+		
 		private EntitySet<Hd> _Hds;
 		
 		private EntitySet<HdDk> _HdDks;
@@ -834,6 +956,8 @@ namespace DAO
     partial void OnChucVuChanged();
     partial void OnDiaChiChanging(string value);
     partial void OnDiaChiChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
     #endregion
 		
 		public Kh()
@@ -939,6 +1063,26 @@ namespace DAO
 					this._DiaChi = value;
 					this.SendPropertyChanged("DiaChi");
 					this.OnDiaChiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(255)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
 				}
 			}
 		}

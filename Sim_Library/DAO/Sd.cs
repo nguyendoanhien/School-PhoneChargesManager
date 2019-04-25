@@ -20,6 +20,7 @@ namespace Sim_Library.DAO
         public Nullable<System.DateTime> TgBd { get; set; }
         public Nullable<System.DateTime> TgKt { get; set; }
         public string TongTien { get; set; }
+        public Nullable<bool> TrangThai { get; set; }
     
         public virtual Hd Hd { get; set; }
         public virtual Sim Sim { get; set; }

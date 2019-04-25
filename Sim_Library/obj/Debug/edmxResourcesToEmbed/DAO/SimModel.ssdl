@@ -7,6 +7,9 @@
     <Property Name="MaHd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MaKh" Type="int" />
     <Property Name="TongTien" Type="varchar" MaxLength="255" />
+    <Property Name="TrangThai" Type="bit" />
+    <Property Name="NgayLap" Type="datetime" />
+    <Property Name="NgayThanhToan" Type="datetime" />
   </EntityType>
   <EntityType Name="HdDk">
     <Key>
@@ -45,6 +48,7 @@
     <Property Name="TgBd" Type="datetime" />
     <Property Name="TgKt" Type="datetime" />
     <Property Name="TongTien" Type="varchar" MaxLength="255" />
+    <Property Name="TrangThai" Type="bit" />
   </EntityType>
   <EntityType Name="Sim">
     <Key>
@@ -53,6 +57,7 @@
     <Property Name="MaSim" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SoSim" Type="varchar" MaxLength="255" />
     <Property Name="MaHdDk" Type="int" />
+    <Property Name="TrangThai" Type="bit" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>

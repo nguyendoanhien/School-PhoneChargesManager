@@ -22,6 +22,7 @@ namespace Sim_Library.DAO
         public int MaSim { get; set; }
         public string SoSim { get; set; }
         public Nullable<int> MaHdDk { get; set; }
+        public Nullable<bool> TrangThai { get; set; }
     
         public virtual HdDk HdDk { get; set; }
         public virtual ICollection<Sd> Sd { get; set; }

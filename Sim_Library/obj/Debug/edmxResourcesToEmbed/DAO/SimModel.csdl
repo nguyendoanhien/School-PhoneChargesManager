@@ -36,6 +36,9 @@
     <Property Name="MaHd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="MaKh" Type="Int32" />
     <Property Name="TongTien" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TrangThai" Type="Boolean" />
+    <Property Name="NgayLap" Type="DateTime" Precision="3" />
+    <Property Name="NgayThanhToan" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Kh" Relationship="SimModel.FK_Hd_Kh" FromRole="Hd" ToRole="Kh" />
     <NavigationProperty Name="Sd" Relationship="SimModel.FK_Sd_Hd" FromRole="Hd" ToRole="Sd" />
   </EntityType>
@@ -80,6 +83,7 @@
     <Property Name="TgBd" Type="DateTime" Precision="3" />
     <Property Name="TgKt" Type="DateTime" Precision="3" />
     <Property Name="TongTien" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TrangThai" Type="Boolean" />
     <NavigationProperty Name="Hd" Relationship="SimModel.FK_Sd_Hd" FromRole="Sd" ToRole="Hd" />
     <NavigationProperty Name="Sim" Relationship="SimModel.FK_Sd_Sim" FromRole="Sd" ToRole="Sim" />
   </EntityType>
@@ -90,6 +94,7 @@
     <Property Name="MaSim" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="SoSim" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="MaHdDk" Type="Int32" />
+    <Property Name="TrangThai" Type="Boolean" />
     <NavigationProperty Name="HdDk" Relationship="SimModel.FK_Sim_HdDk" FromRole="Sim" ToRole="HdDk" />
     <NavigationProperty Name="Sd" Relationship="SimModel.FK_Sd_Sim" FromRole="Sim" ToRole="Sd" />
   </EntityType>

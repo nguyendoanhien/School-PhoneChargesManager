@@ -1,13 +1,32 @@
 ﻿<%@ Page Title="HoaDon" Language="C#" MaintainScrollPositionOnPostback="true" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="~/pages/HoaDon.aspx.cs" Inherits="Sim_Web.pages.HoaDon" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-   
+
     <div class="row">
         <div class="col-md-6">
-            <div class="btn-group">
-                <asp:Button runat="server" ID="btnLogSmsRandom" CssClass="btn btn-danger" Text="Sinh ngẫu nhiên file log" OnClick="btnLogSmsRandom_Click" />
-                <asp:Button runat="server" ID="btnLogSms" CssClass="btn btn-primary" Text="Đọc file log" OnClick="btnLogSms_Click" />
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="btn-group">
+                        <asp:Button runat="server" ID="btnLogSmsRandom" CssClass="btn btn-danger" Text="Sinh ngẫu nhiên file log" OnClick="btnLogSmsRandom_Click" />
+                        <asp:Button runat="server" ID="btnLogSms" CssClass="btn btn-primary" Text="Đọc file log" OnClick="btnLogSms_Click" />
+                        <asp:Button runat="server" ID="btnLogSmsFilter" CssClass="btn btn-primary" Text="Lọc" OnClick="btnLogSmsFilter_Click" />
+                    </div>
+                </div>
             </div>
+            <div class="row">
+                <div class="col-xs-6 table-responsive">
+                    <asp:TextBox runat="server" ID="txtDateFrom"></asp:TextBox>
+                    <asp:ImageButton runat="server" id="ibtnShowDateFrom" OnClick="ibtnShowDateFrom_OnClick" ImageUrl="/images/calendar.png" Height="32px" Width="32px"/>
+                    <asp:Calendar DayNameFormat="FirstLetter" Caption="Thời gian bắt đầu" OnDayRender="cldFrom_OnDayRender"  CssClass="table table-condensed" runat="server" ID="cldFrom" OnSelectionChanged="cldFrom_OnSelectionChanged"></asp:Calendar>
+                </div>
+                <div class="col-xs-6 table-responsive">
+                    <asp:TextBox runat="server" ID="txtDateTo"></asp:TextBox>
+                    <asp:ImageButton runat="server" OnClick="ibtnShowDateTo_OnClick" id="ibtnShowDateTo" ImageUrl="/images/calendar.png" Width="32px" Height="32px"/>
+                    <asp:Calendar DayNameFormat="FirstLetter" Caption="Thời gian kết thúc" OnDayRender="cldTo_OnDayRender" CssClass="table table-condensed" runat="server" ID="cldTo" OnSelectionChanged="cldTo_OnSelectionChanged"></asp:Calendar>
+                </div>
+            </div>
+
+
             <asp:GridView runat="server" ID="gvLogSms" CssClass="table table-bordered" OnPageIndexChanging="gvLogSms_PageIndexChanging" AllowPaging="True">
             </asp:GridView>
         </div>

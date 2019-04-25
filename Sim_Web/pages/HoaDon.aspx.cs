@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Services.Discovery;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Newtonsoft.Json;
@@ -21,7 +22,10 @@ namespace Sim_Web.pages
         private int selectedReceiptId = -1;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                cldFrom.Visible = cldTo.Visible = false;
+            }
 
 
         }
@@ -75,9 +79,47 @@ namespace Sim_Web.pages
             drlLogSmsKh_GetData();
 
         }
+        
+        private void gvLogSmsBindFilter()
+        {if (txtDateFrom.Text == "" || txtDateTo.Text == "") return;
+            DateTime dtTxtFrom = DateTime.Parse(txtDateFrom.Text);
+            DateTime dtTxtTo = DateTime.Parse(txtDateTo.Text);
+
+            DateTime dtFrom = new DateTime(dtTxtFrom.Year,dtTxtFrom.Month,dtTxtFrom.Day,0,0,0);
+            DateTime dtTo = new DateTime(dtTxtTo.Year,dtTxtTo.Month,dtTxtTo.Day,23,59,59);
+          
+            var dskq = from sd in SimHelper.ReadFromTextLog()
+                where sd.TgBd.Value.CompareTo(dtFrom)>=0
+
+                      && sd.TgKt.Value.CompareTo(dtTo)<=0
+                select new
+                {
+                    sd.MaSim,
+                    sd.Sim.SoSim,
+                    sd.TgBd,
+                    sd.TgKt,
+                    MaKh = sd.Sim?.HdDk != null ? sd.Sim.HdDk.MaKh + "" : ""
+                };
+            gvLogSms.DataSource = dskq.ToList();
+            gvLogSms.DataBind();
+
+            rdlKh.DataSource = (from kh in _khBus.TatCa()
+                join kq in dskq.Where(m => m.MaKh != "") on kh.MaKh equals int.Parse(kq.MaKh)
+                select new { kh.MaKh, kh.TenKh }).Distinct();
+            rdlKh.DataTextField = "MaKh";
+            rdlKh.DataValueField = "MaKh";
+            rdlKh.DataBind();
+            drlLogSmsKh_GetData();
+
+        }
         protected void btnLogSms_Click(object sender, EventArgs e)
         {
             gvLogSmsBind();
+
+        }
+        protected void btnLogSmsFilter_Click(object sender, EventArgs e)
+        {
+            gvLogSmsBindFilter();
 
         }
 
@@ -205,6 +247,36 @@ namespace Sim_Web.pages
         {
             gvLogSmsKh.PageIndex = e.NewPageIndex;
             drlLogSmsKh_GetData();
+        }
+
+        protected void ibtnShowDateFrom_OnClick(object sender, ImageClickEventArgs e)
+        {
+            cldFrom.Visible =  !cldFrom.Visible;
+        }
+        protected void ibtnShowDateTo_OnClick(object sender, ImageClickEventArgs e)
+        {
+            cldTo.Visible =     !cldTo.Visible;
+        }
+
+        protected void cldFrom_OnSelectionChanged(object sender, EventArgs e)
+        {
+            txtDateFrom.Text = cldFrom.SelectedDate.ToString("d");
+            
+        }
+
+        protected void cldTo_OnSelectionChanged(object sender, EventArgs e)
+        {
+            txtDateTo.Text = cldTo.SelectedDate.ToString("d");
+        }
+
+        protected void cldFrom_OnDayRender(object sender, DayRenderEventArgs e)
+        {
+            
+        }
+
+        protected void cldTo_OnDayRender(object sender, DayRenderEventArgs e)
+        {
+            
         }
     }
 }

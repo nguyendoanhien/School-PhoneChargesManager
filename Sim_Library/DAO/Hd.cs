@@ -22,6 +22,9 @@ namespace Sim_Library.DAO
         public int MaHd { get; set; }
         public Nullable<int> MaKh { get; set; }
         public string TongTien { get; set; }
+        public Nullable<bool> TrangThai { get; set; }
+        public Nullable<System.DateTime> NgayLap { get; set; }
+        public Nullable<System.DateTime> NgayThanhToan { get; set; }
     
         public virtual Kh Kh { get; set; }
         public virtual ICollection<Sd> Sd { get; set; }

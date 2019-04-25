@@ -12,6 +12,9 @@
           <Property Name="MaHd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaKh" Type="int" />
           <Property Name="TongTien" Type="varchar" MaxLength="255" />
+          <Property Name="TrangThai" Type="bit" />
+          <Property Name="NgayLap" Type="datetime" />
+          <Property Name="NgayThanhToan" Type="datetime" />
         </EntityType>
         <EntityType Name="HdDk">
           <Key>
@@ -50,6 +53,7 @@
           <Property Name="TgBd" Type="datetime" />
           <Property Name="TgKt" Type="datetime" />
           <Property Name="TongTien" Type="varchar" MaxLength="255" />
+          <Property Name="TrangThai" Type="bit" />
         </EntityType>
         <EntityType Name="Sim">
           <Key>
@@ -58,6 +62,7 @@
           <Property Name="MaSim" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SoSim" Type="varchar" MaxLength="255" />
           <Property Name="MaHdDk" Type="int" />
+          <Property Name="TrangThai" Type="bit" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -198,6 +203,9 @@
           <Property Name="MaHd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MaKh" Type="Int32" />
           <Property Name="TongTien" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TrangThai" Type="Boolean" />
+          <Property Name="NgayLap" Type="DateTime" Precision="3" />
+          <Property Name="NgayThanhToan" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Kh" Relationship="SimModel.FK_Hd_Kh" FromRole="Hd" ToRole="Kh" />
           <NavigationProperty Name="Sd" Relationship="SimModel.FK_Sd_Hd" FromRole="Hd" ToRole="Sd" />
         </EntityType>
@@ -242,6 +250,7 @@
           <Property Name="TgBd" Type="DateTime" Precision="3" />
           <Property Name="TgKt" Type="DateTime" Precision="3" />
           <Property Name="TongTien" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TrangThai" Type="Boolean" />
           <NavigationProperty Name="Hd" Relationship="SimModel.FK_Sd_Hd" FromRole="Sd" ToRole="Hd" />
           <NavigationProperty Name="Sim" Relationship="SimModel.FK_Sd_Sim" FromRole="Sd" ToRole="Sim" />
         </EntityType>
@@ -252,6 +261,7 @@
           <Property Name="MaSim" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SoSim" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="MaHdDk" Type="Int32" />
+          <Property Name="TrangThai" Type="Boolean" />
           <NavigationProperty Name="HdDk" Relationship="SimModel.FK_Sim_HdDk" FromRole="Sim" ToRole="HdDk" />
           <NavigationProperty Name="Sd" Relationship="SimModel.FK_Sd_Sim" FromRole="Sim" ToRole="Sd" />
         </EntityType>
@@ -334,6 +344,9 @@
           <EntitySetMapping Name="Hd">
             <EntityTypeMapping TypeName="SimModel.Hd">
               <MappingFragment StoreEntitySet="Hd">
+                <ScalarProperty Name="NgayThanhToan" ColumnName="NgayThanhToan" />
+                <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="TongTien" ColumnName="TongTien" />
                 <ScalarProperty Name="MaKh" ColumnName="MaKh" />
                 <ScalarProperty Name="MaHd" ColumnName="MaHd" />
@@ -373,6 +386,7 @@
           <EntitySetMapping Name="Sd">
             <EntityTypeMapping TypeName="SimModel.Sd">
               <MappingFragment StoreEntitySet="Sd">
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="TongTien" ColumnName="TongTien" />
                 <ScalarProperty Name="TgKt" ColumnName="TgKt" />
                 <ScalarProperty Name="TgBd" ColumnName="TgBd" />
@@ -385,6 +399,7 @@
           <EntitySetMapping Name="Sim">
             <EntityTypeMapping TypeName="SimModel.Sim">
               <MappingFragment StoreEntitySet="Sim">
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="MaHdDk" ColumnName="MaHdDk" />
                 <ScalarProperty Name="SoSim" ColumnName="SoSim" />
                 <ScalarProperty Name="MaSim" ColumnName="MaSim" />
